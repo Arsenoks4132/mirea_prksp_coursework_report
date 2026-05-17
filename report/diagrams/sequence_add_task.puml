@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor black
+  ActorBorderColor black
+  ActorBackgroundColor white
+  ParticipantBorderColor black
+  ParticipantBackgroundColor white
+  LifeLineBorderColor black
+}
+
+actor "Сотрудник\n(браузер)" as User
+participant "Nginx" as Nginx
+participant "Django\nProfileUser (View)" as View
+participant "AddTaskForm" as Form
+participant "Task (Model)" as Model
+database "PostgreSQL" as DB
+participant "Redis\n(кэш)" as Redis
+
+User -> Nginx : GET /profile\n(с sessionid cookie)
+Nginx -> View : проксирование
+View -> DB : SELECT User, Task WHERE worker=current_user
+DB -> View : данные пользователя и задач
+View -> Redis : попытка получить из кэша
+Redis -> View : промах кэша (или кэшированная страница)
+View -> User : HTML-страница профиля с формой
+
+User -> Nginx : POST /profile\n{category, spent, comment, report}
+Nginx -> View : проксирование
+View -> Form : AddTaskForm(POST data, FILES)
+Form -> Form : валидация (spent в [1..24],\ncategory выбрана, comment ≤ 1000 символов)
+
+alt Форма валидна
+  Form -> View : cleaned_data
+  View -> Model : Task(worker=current_user, ...)\ntask.save()
+  Model -> DB : INSERT INTO tasks_task (...)
+  DB -> Model : task.id
+  Model -> View : созданный объект Task
+  View -> Redis : инвалидация кэша страницы профиля
+  View -> User : 302 Redirect → /profile
+else Форма невалидна
+  View -> User : 200 OK — страница с ошибками формы
+end
+
+@enduml

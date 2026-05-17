@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor black
+  ActorBorderColor black
+  ActorBackgroundColor white
+  ParticipantBorderColor black
+  ParticipantBackgroundColor white
+  LifeLineBorderColor black
+}
+
+actor "Пользователь\n(браузер)" as User
+participant "Nginx" as Nginx
+participant "Django\n(View)" as Django
+participant "Django Auth\n(Session)" as Auth
+database "PostgreSQL" as DB
+
+User -> Nginx : GET /login/employee
+Nginx -> Django : проксирование запроса
+Django -> User : HTML-страница формы входа
+
+User -> Nginx : POST /login/employee\n{username, password}
+Nginx -> Django : проксирование запроса
+Django -> Auth : authenticate(username, password)
+Auth -> DB : SELECT User WHERE username=...
+DB -> Auth : объект User (или None)
+Auth -> Django : User / None
+
+alt Аутентификация успешна
+  Django -> Auth : login(request, user)
+  Auth -> DB : INSERT Session (session_key, user_id, expiry)
+  DB -> Auth : OK
+  Auth -> Django : session_key в cookie
+  Django -> Nginx : 302 Redirect → /profile или /statistics
+  Nginx -> User : Set-Cookie: sessionid=...\nLocation: /profile
+else Неверные учётные данные
+  Django -> Nginx : 200 OK (форма с ошибкой)
+  Nginx -> User : HTML-страница с сообщением об ошибке
+end
+
+@enduml

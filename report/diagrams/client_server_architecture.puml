@@ -6,22 +6,42 @@ skinparam rectangle {
   BorderColor black
   BackgroundColor white
 }
+skinparam database {
+  BorderColor black
+  BackgroundColor white
+}
+skinparam actor {
+  BorderColor black
+  BackgroundColor white
+}
 
-actor Browser
-rectangle "URL routing" as Router
-rectangle "Django Views" as Views
-rectangle "Django Models" as Models
-database "PostgreSQL" as DB
-rectangle "Templates" as Templates
-rectangle "HTML response" as Response
+actor "Пользователь\n(браузер)" as Browser
 
-Browser --> Router : HTTP request
-Router --> Views : route request
-Views --> Models : ORM query
-Models --> DB : SQL
-DB --> Models : data
-Models --> Views : objects
-Views --> Templates : context
-Templates --> Response : rendered page
-Response --> Browser : HTML
+rectangle "Уровень балансировки" {
+  rectangle "Traefik\n(балансировщик\nнагрузки)" as Traefik
+}
+
+rectangle "Уровень веб-сервера" {
+  rectangle "Nginx × 3\n(статика / медиа /\nпроксирование)" as Nginx
+}
+
+rectangle "Уровень сервера приложений" {
+  rectangle "Gunicorn\n(WSGI)" as Gunicorn
+  rectangle "Django\n(URL Router →\nViews → ORM →\nTemplates)" as Django
+}
+
+rectangle "Уровень хранения данных" {
+  database "PostgreSQL\n(основная БД)" as PG
+  database "Redis\n(кэш страниц)" as Redis
+}
+
+Browser --> Traefik : HTTP-запрос\n(порт 80)
+Traefik --> Nginx : статические запросы
+Traefik --> Gunicorn : динамические запросы
+Nginx --> Gunicorn : проксирование
+Gunicorn --> Django : WSGI вызов
+Django --> PG : SQL через ORM
+Django --> Redis : кэш GET/SET
+Django --> Browser : HTML-ответ\n(через Nginx → Traefik)
+
 @enduml

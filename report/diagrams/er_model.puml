@@ -8,28 +8,33 @@ skinparam class {
 }
 
 class User {
-  +id: bigint
-  +username: string
-  +email: string
-  +first_name: string
-  +last_name: string
-  +photo: image
+  +id: bigint <<PK>>
+  +username: string(150)
+  +password: string(128)
+  +email: string(254)
+  +first_name: string(150)
+  +last_name: string(150)
+  +photo: image [0..1]
+  +is_staff: boolean
+  +is_active: boolean
+  +date_joined: datetime
 }
 
 class Category {
-  +id: bigint
-  +name: string
+  +id: bigint <<PK>>
+  +name: string(100) <<unique>>
   +cost: integer
 }
 
 class Task {
-  +id: bigint
-  +spent: integer
+  +id: bigint <<PK>>
+  +spent: integer [1..24]
   +time_create: datetime
-  +comment: string
-  +report: file
+  +comment: string(1000)
+  +report: file [0..1]
 }
 
-User "1" -- "0..*" Task : worker
-Category "1" -- "0..*" Task : category
+User "1" --o "0..*" Task : worker >
+Category "1" --o "0..*" Task : category >
+
 @enduml

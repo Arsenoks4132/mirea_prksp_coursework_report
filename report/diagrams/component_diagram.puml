@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam component {
+  BorderColor black
+  BackgroundColor white
+  ArrowColor black
+}
+skinparam database {
+  BorderColor black
+  BackgroundColor white
+}
+skinparam rectangle {
+  BorderColor black
+  BackgroundColor #f5f5f5
+}
+
+rectangle "Клиент" {
+  [Браузер] as Browser
+}
+
+rectangle "Балансировщик нагрузки" {
+  [Traefik] as Traefik
+}
+
+rectangle "Веб-сервер (×3)" {
+  [Nginx] as Nginx
+  folder "Статические файлы" as Static
+  folder "Медиафайлы" as Media
+}
+
+rectangle "Сервер приложений (×3)" {
+  [Gunicorn] as Gunicorn
+  rectangle "Django" {
+    [URL Router] as Router
+    [Views (CBV)] as Views
+    [Forms & Validators] as Forms
+    [ORM] as ORM
+    [Template Engine] as Templates
+    [Auth & Session] as Auth
+    [Cache Framework] as Cache
+  }
+}
+
+rectangle "Сервер данных" {
+  database "PostgreSQL" as PG
+  database "Redis" as Redis
+}
+
+Browser --> Traefik : HTTP :80
+Traefik --> Nginx : маршрутизация
+Nginx --> Static : статика / медиа (прямая отдача)
+Nginx --> Traefik : динамические запросы\n(header: is-backend)
+Traefik --> Gunicorn : WSGI :8000
+Gunicorn --> Router
+Router --> Views
+Views --> Forms
+Views --> ORM
+Views --> Auth
+Views --> Cache
+ORM --> PG : SQL-запросы
+Cache --> Redis : GET/SET кэш страниц
+Views --> Templates : контекст данных
+Templates --> Browser : HTML-ответ
+
+@enduml

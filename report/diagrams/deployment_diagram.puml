@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam node {
+  BorderColor black
+  BackgroundColor white
+}
+skinparam rectangle {
+  BorderColor black
+  BackgroundColor #f5f5f5
+}
+skinparam database {
+  BorderColor black
+  BackgroundColor white
+}
+skinparam artifact {
+  BorderColor black
+  BackgroundColor white
+}
+
+node "Пользователь" {
+  [Браузер] as Browser
+}
+
+node "Yandex Cloud\nCompute VM\n(Ubuntu, Docker)" {
+  rectangle "Docker Compose" {
+    node "traefik_balancer\n(traefik:v3.2)" {
+      artifact "traefik.yml\ndynamic.yml" as TraefikConf
+    }
+    node "nginx_frontend × 3\n(nginx:1.27)" {
+      artifact "TaskAndTime.conf" as NginxConf
+      artifact "static/\nmedia/" as StaticFiles
+    }
+    node "django_backend × 3\n(python:3.12)" {
+      artifact "entrypoint.sh" as Entrypoint
+      artifact "TaskAndTime/" as DjangoApp
+      artifact ".env" as EnvFile
+    }
+    node "postgres_db\n(postgres:17)" {
+      database "TaskAndTimes DB" as PGDB
+    }
+    node "redis_cache\n(redis:latest)" {
+      database "Cache Store" as RedisDB
+    }
+  }
+}
+
+Browser --> traefik_balancer : HTTP :80
+traefik_balancer --> nginx_frontend : маршрутизация
+traefik_balancer --> django_backend : backend-запросы
+nginx_frontend --> django_backend : проксирование
+django_backend --> postgres_db : SQL (порт 5432)
+django_backend --> redis_cache : кэш (порт 6379)
+
+@enduml
