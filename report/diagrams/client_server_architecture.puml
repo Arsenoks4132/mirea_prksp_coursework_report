@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam rectangle {
+  BorderColor black
+  BackgroundColor white
+}
+
+actor Browser
+rectangle "URL routing" as Router
+rectangle "Django Views" as Views
+rectangle "Django Models" as Models
+database "PostgreSQL" as DB
+rectangle "Templates" as Templates
+rectangle "HTML response" as Response
+
+Browser --> Router : HTTP request
+Router --> Views : route request
+Views --> Models : ORM query
+Models --> DB : SQL
+DB --> Models : data
+Models --> Views : objects
+Views --> Templates : context
+Templates --> Response : rendered page
+Response --> Browser : HTML
+@enduml

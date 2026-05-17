@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam class {
+  BorderColor black
+  BackgroundColor white
+}
+
+class User {
+  +id: bigint
+  +username: string
+  +email: string
+  +first_name: string
+  +last_name: string
+  +photo: image
+}
+
+class Category {
+  +id: bigint
+  +name: string
+  +cost: integer
+}
+
+class Task {
+  +id: bigint
+  +spent: integer
+  +time_create: datetime
+  +comment: string
+  +report: file
+}
+
+User "1" -- "0..*" Task : worker
+Category "1" -- "0..*" Task : category
+@enduml

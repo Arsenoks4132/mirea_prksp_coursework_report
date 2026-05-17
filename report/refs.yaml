@@ -1,0 +1,221 @@
+web-dev-tuzovskiy:
+  type: Book
+  title: Проектирование и разработка web-приложений
+  genre: учебное пособие для вузов
+  author: "Тузовский, А. Ф."
+  date: 2021
+  page-total: 218
+  serial-number: "ISBN 978-5-534-00515-8"
+  language: ru-RU
+  publisher:
+    name: Юрайт
+    location: Москва
+  parent:
+    type: Web
+    title: Образовательная платформа Юрайт
+    url:
+      value: https://urait.ru/bcode/469982
+      date: 2026-05-12
+
+martin2021:
+  type: Book
+  title: Чистая архитектура. Искусство разработки программного обеспечения
+  author: "Мартин, Р."
+  date: 2021
+  page-total: 352
+  language: ru-RU
+  publisher:
+    name: Питер
+    location: Санкт-Петербург
+
+mele2023:
+  type: Book
+  title: Django 4 в примерах
+  genre: руководство
+  author: "Меле, А."
+  translator: "Логунов, А. В."
+  date: 2023
+  page-total: 800
+  serial-number: "ISBN 978-5-93700-204-4"
+  language: ru-RU
+  publisher:
+    name: ДМК Пресс
+    location: Москва
+  parent:
+    type: Web
+    title: Лань
+    organization: электронно-библиотечная система
+    url:
+      value: https://e.lanbook.com/book/348113
+      date: 2026-05-12
+
+persival2022:
+  type: Book
+  title: Паттерны разработки на Python. TDD, DDD и событийно-ориентированная архитектура
+  author:
+    - "Персиваль, Г."
+    - "Грегори, Б."
+  date: 2022
+  page-total: 336
+  language: ru-RU
+  publisher:
+    name: Питер
+    location: Санкт-Петербург
+
+hoffman2021:
+  type: Book
+  title: Безопасность веб-приложений
+  author: "Хоффман, Э."
+  date: 2021
+  page-total: 336
+  language: ru-RU
+  publisher:
+    name: Питер
+    location: Санкт-Петербург
+
+antonova2019:
+  type: Book
+  title: Разработка web-сервисов с использованием HTML, CSS, PHP и MySQL
+  genre: учебно-методическое пособие
+  author:
+    - "Антонова, И. И."
+    - "Кашкин, Е. В."
+  date: 2019
+  language: ru-RU
+  publisher:
+    name: РТУ МИРЭА
+    location: Москва
+  parent:
+    type: Web
+    title: Библиотека МИРЭА
+    url:
+      value: http://library.mirea.ru/secret/15052019/2022.iso
+      date: 2026-05-12
+
+pipeops2024:
+  type: Article
+  title: "PostgreSQL and MySQL: Which is Better? A 2024 Comparison"
+  author: "PipeOps"
+  date: 2024
+  url:
+    value: https://blog.pipeops.io/postgresql-and-mysql-which-is-better-a-2024-comparison/
+    date: 2026-05-12
+
+godzuras2023:
+  type: Book
+  title: Docker Compose для разработчика
+  genre: руководство
+  author: "Годзурас, Э."
+  translator: "Киселева, А. Н."
+  date: 2023
+  page-total: 220
+  serial-number: "ISBN 978-5-93700-203-7"
+  language: ru-RU
+  publisher:
+    name: ДМК Пресс
+    location: Москва
+  parent:
+    type: Web
+    title: Лань
+    organization: электронно-библиотечная система
+    url:
+      value: https://e.lanbook.com/book/348110
+      date: 2026-05-12
+
+django-docs:
+  type: Web
+  title: Django documentation
+  date: 2026
+  url:
+    value: https://docs.djangoproject.com/en/5.1/
+    date: 2026-05-12
+
+postgresql-docs:
+  type: Web
+  title: PostgreSQL Documentation
+  date: 2026
+  url:
+    value: https://www.postgresql.org/docs/
+    date: 2026-05-12
+
+redis-docs:
+  type: Web
+  title: Redis Documentation
+  date: 2026
+  url:
+    value: https://redis.io/docs/latest/
+    date: 2026-05-12
+
+docker-docs:
+  type: Web
+  title: Docker Docs
+  date: 2026
+  url:
+    value: https://docs.docker.com/
+    date: 2026-05-12
+
+flask-docs:
+  type: Web
+  title: Flask Documentation
+  date: 2026
+  url:
+    value: https://flask.palletsprojects.com/
+    date: 2026-05-12
+
+fastapi-docs:
+  type: Web
+  title: FastAPI Documentation
+  date: 2026
+  url:
+    value: https://fastapi.tiangolo.com/
+    date: 2026-05-12
+
+jira-software:
+  type: Web
+  title: Jira Software
+  date: 2026
+  url:
+    value: https://www.atlassian.com/software/jira
+    date: 2026-05-12
+
+tempo-timesheets:
+  type: Web
+  title: Tempo Timesheets
+  date: 2026
+  url:
+    value: https://www.tempo.io/product/timesheets
+    date: 2026-05-12
+
+bitrix24:
+  type: Web
+  title: Битрикс24
+  date: 2026
+  url:
+    value: https://www.bitrix24.ru/
+    date: 2026-05-12
+
+clockify:
+  type: Web
+  title: Clockify
+  date: 2026
+  url:
+    value: https://clockify.me/
+    date: 2026-05-12
+
+johansson2022:
+  type: Thesis
+  title: HTTP Load Balancing Performance Evaluation of HAProxy, NGINX, Traefik and Envoy with the Round-Robin Algorithm
+  author: "Johansson, A."
+  date: 2022
+  url:
+    value: https://urn.kb.se/resolve?urn=urn:nbn:se:his:diva-21475
+    date: 2026-05-12
+
+chihana2018:
+  type: Article
+  title: "Web Server Performance of Apache and Nginx: A Systematic Literature Review"
+  author: "Chihana, S."
+  date: 2018
+  url:
+    value: https://www.researchgate.net/profile/Sipiwe-Chihana/publication/329118749_Web_Server_Performance_of_Apache_and_Nginx_A_Systematic_Literature_Review/links/5bf691d0299bf1124fe55161/Web-Server-Performance-of-Apache-and-Nginx-A-Systematic-Literature-Review.pdf
+    date: 2026-05-12
