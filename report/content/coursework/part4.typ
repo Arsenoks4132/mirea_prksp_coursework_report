@@ -50,26 +50,8 @@
 
 Результаты запуска фаззинг-тестов представлены на рисунке @fuzz-tests-output.
 
-/*
-  ПЛЕЙСХОЛДЕР — результаты запуска фаззинг-тестов
-  Файл: images/fuzz_tests_output.png
-  Описание: Скриншот терминала с результатом команды:
-    python manage.py test Tasks
-  Ожидаемый вывод: строки вида
-    "Ran N tests in X.XXXs"
-    "OK"
-  Команда для запуска (внутри контейнера django_backend или локально):
-    cd TaskAndTime && python manage.py test Tasks
-*/
 #figure(
-  rect(width: 95%, height: 6cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Результаты запуска тестов (`python manage.py test Tasks`)\
-      Ожидаемый вывод: `Ran N tests in X.XXXs — OK`\
-      Сохранить как: `images/fuzz_tests_output.png`
-    ]
-  ],
+  image("../../images/fuzz_tests_output.png", width: 95%),
   caption: [Результаты запуска фаззинг-тестов],
 ) <fuzz-tests-output>
 
@@ -96,28 +78,8 @@
 
 Для репозитория ведётся содержательная история изменений. Каждый коммит отражает логически завершённое изменение с описанием цели правки. История коммитов репозитория представлена на рисунке @github-commits.
 
-/*
-  ПЛЕЙСХОЛДЕР — история коммитов репозитория GitHub
-  Файл: images/github_commits.png
-  Описание: Скриншот страницы https://github.com/Arsenoks4132/TaskMetrics/commits/master
-  Должно быть видно: не менее 8 последних коммитов с хэшами, датами и сообщениями.
-  Последние коммиты (снизу вверх):
-    - "b0caac4 new fixture data; better startup script"
-    - "cf51ab3 Add full CRUD for tasks: edit and delete views with role-based access"
-    - "30e42f8 Add profile editing, password change, and enable password validators"
-    - "9a9e8d0 Add frontend CRUD for task categories (supervisor only)"
-    - "2097ec7 Add fuzz and property-based tests using Hypothesis"
-    - "eaf8901 Expand README with project structure, architecture, and run instructions"
-*/
 #figure(
-  rect(width: 95%, height: 8cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      История коммитов GitHub-репозитория\
-      URL: `https://github.com/Arsenoks4132/TaskMetrics/commits/master`\
-      Сохранить как: `images/github_commits.png`
-    ]
-  ],
+  image("../../images/github_commits.png", width: 95%),
   caption: [История коммитов репозитория GitHub],
 ) <github-commits>
 
@@ -148,26 +110,8 @@ Django-контейнеры и Nginx-контейнеры запускаются
 
 Диаграмма развёртывания контейнеров на Yandex Cloud VM представлена на рисунке @deployment-diagram.
 
-/*
-  ПЛЕЙСХОЛДЕР — диаграмма развёртывания
-  Файл: images/deployment_diagram.png
-  Источник: diagrams/deployment_diagram.puml
-  Описание: UML deployment diagram.
-  Показывает: узел "Yandex Cloud Compute VM (Ubuntu, Docker)" с Docker Compose,
-  внутри: контейнеры traefik_balancer, nginx_frontend × 3, django_backend × 3,
-  postgres_db, redis_cache. Узел "Пользователь" с браузером.
-  Как получить: отрендерить diagrams/deployment_diagram.puml через PlantUML
-  и сохранить как images/deployment_diagram.png
-*/
 #figure(
-  rect(width: 95%, height: 10cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Диаграмма развёртывания (UML Deployment Diagram)\
-      Источник: `diagrams/deployment_diagram.puml`\
-      Отрендерить и сохранить как `images/deployment_diagram.png`
-    ]
-  ],
+  image("../../images/deployment_diagram.png", width: 95%),
   caption: [Диаграмма развёртывания приложения на Yandex Cloud],
 ) <deployment-diagram>
 
@@ -191,26 +135,10 @@ Django-контейнеры и Nginx-контейнеры запускаются
 
 === Результат развёртывания
 
-После завершения развёртывания приложение доступно по адресу публичного IP-адреса виртуальной машины Yandex Cloud. Работающее приложение в облаке представлено на рисунке @cloud-deploy.
+После завершения развёртывания приложение доступно по адресу `http://130.193.45.17`. Работающее приложение в облаке представлено на рисунке @cloud-deploy.
 
-/*
-  ПЛЕЙСХОЛДЕР — работающее приложение в облаке
-  Файл: images/cloud_deploy.png
-  Описание: Скриншот браузера с открытым главным экраном приложения (или профилем сотрудника)
-  по адресу http://<PUBLIC_IP_YANDEX_CLOUD>/
-  В адресной строке должен быть виден публичный IP-адрес.
-  При наличии домена — показать доменное имя.
-  Также добавить в текст отчёта реальный URL после деплоя.
-*/
 #figure(
-  rect(width: 95%, height: 7cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Приложение, развёрнутое на Yandex Cloud VM\
-      URL: `http://<IP_АДРЕС_ВМ>/` (добавить после деплоя)\
-      Сохранить как: `images/cloud_deploy.png`
-    ]
-  ],
+  image("../../images/cloud_deploy.png", width: 95%),
   caption: [Приложение TaskAndTimes, развёрнутое на Yandex Cloud],
 ) <cloud-deploy>
 

@@ -37,38 +37,13 @@
 
 *Delete* — удаление реализовано в представлении `DeleteTask` (`DeleteView`), доступном по URL `/tasks/delete/<task_id>`. Применяется та же логика проверки доступа, что и при редактировании. Перед удалением отображается страница подтверждения. Страница подтверждения удаления задачи представлена на рисунке @delete-task-page.
 
-/*
-  ПЛЕЙСХОЛДЕР — страница редактирования задачи
-  Файл: images/edit_task_page.png
-  Описание: Скриншот страницы /tasks/edit/<id> с формой редактирования задачи.
-  Поля формы: тип задачи (select), затраченное время (число), комментарий (textarea), отчёт (file).
-  Кнопки: "Сохранить", "← Назад".
-*/
 #figure(
-  rect(width: 95%, height: 7cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Страница редактирования задачи (`/tasks/edit/<id>`)\
-      Сохранить как: `images/edit_task_page.png`
-    ]
-  ],
+  image("../../images/edit_task_page.png", width: 95%),
   caption: [Страница редактирования задачи],
 ) <edit-task-page>
 
-/*
-  ПЛЕЙСХОЛДЕР — страница подтверждения удаления задачи
-  Файл: images/delete_task_page.png
-  Описание: Скриншот страницы /tasks/delete/<id> с карточкой задачи
-  и двумя кнопками: "Удалить" (красная) и "Отмена".
-*/
 #figure(
-  rect(width: 95%, height: 6cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Страница подтверждения удаления задачи (`/tasks/delete/<id>`)\
-      Сохранить как: `images/delete_task_page.png`
-    ]
-  ],
+  image("../../images/delete_task_page.png", width: 95%),
   caption: [Страница подтверждения удаления задачи],
 ) <delete-task-page>
 
@@ -83,22 +58,8 @@
 
 Доступ к каждому из этих представлений защищён миксином `PermissionRequiredMixin` с требованием прав `Tasks.view_user`, которыми обладают только пользователи с флагом `is_staff`. Форма `CategoryForm` выполняет валидацию полей `name` (до 100 символов, уникальность) и `cost` (целое число). Страница управления категориями представлена на рисунке @categories-page.
 
-/*
-  ПЛЕЙСХОЛДЕР — страница управления категориями
-  Файл: images/categories_page.png
-  Описание: Скриншот страницы /categories.
-  Содержит: заголовок "Категории задач", кнопку "+ Добавить категорию",
-  список карточек с названием и стоимостью категории,
-  кнопки "Изменить" и "Удалить" у каждой карточки.
-*/
 #figure(
-  rect(width: 95%, height: 7cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Страница управления категориями (`/categories`)\
-      Сохранить как: `images/categories_page.png`
-    ]
-  ],
+  image("../../images/categories_page.png", width: 95%),
   caption: [Страница управления категориями задач],
 ) <categories-page>
 
@@ -110,21 +71,8 @@
 
 `ChangePassword` (`/profile/password`) — основан на `PasswordChangeView`. Сохраняет активность текущей сессии после смены пароля с помощью `update_session_auth_hash`. Страница редактирования профиля представлена на рисунке @edit-profile-page.
 
-/*
-  ПЛЕЙСХОЛДЕР — страница редактирования профиля
-  Файл: images/edit_profile_page.png
-  Описание: Скриншот страницы /profile/edit с формой редактирования.
-  Поля: Имя, Фамилия, E-mail, Фотография.
-  Кнопки: "Сохранить", ссылка "Сменить пароль", "← Назад к профилю".
-*/
 #figure(
-  rect(width: 95%, height: 7cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Страница редактирования профиля (`/profile/edit`)\
-      Сохранить как: `images/edit_profile_page.png`
-    ]
-  ],
+  image("../../images/edit_profile_page.png", width: 95%),
   caption: [Страница редактирования профиля пользователя],
 ) <edit-profile-page>
 
@@ -143,26 +91,8 @@
 
 Диаграмма последовательности процесса аутентификации представлена на рисунке @sequence-auth.
 
-/*
-  ПЛЕЙСХОЛДЕР — диаграмма последовательности аутентификации
-  Файл: images/sequence_auth_diagram.png
-  Источник: diagrams/sequence_auth.puml
-  Описание: UML sequence diagram. Участники: Пользователь (браузер), Nginx,
-  Django (View), Django Auth (Session), PostgreSQL.
-  Показывает: GET /login/employee → форма; POST данных → authenticate() →
-  SELECT User → login() → INSERT Session → Set-Cookie: sessionid → redirect.
-  Как получить: отрендерить diagrams/sequence_auth.puml через PlantUML
-  и сохранить как images/sequence_auth_diagram.png
-*/
 #figure(
-  rect(width: 95%, height: 11cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Диаграмма последовательности: аутентификация\
-      Источник: `diagrams/sequence_auth.puml`\
-      Отрендерить и сохранить как `images/sequence_auth_diagram.png`
-    ]
-  ],
+  image("../../images/sequence_auth_diagram.png", width: 95%),
   caption: [Диаграмма последовательности процесса аутентификации],
 ) <sequence-auth>
 
@@ -213,26 +143,8 @@
 
 Процесс добавления задачи сотрудником описан диаграммой последовательности на рисунке @sequence-task.
 
-/*
-  ПЛЕЙСХОЛДЕР — диаграмма последовательности добавления задачи
-  Файл: images/sequence_task_diagram.png
-  Источник: diagrams/sequence_add_task.puml
-  Описание: UML sequence diagram. Участники: Сотрудник (браузер), Nginx,
-  Django ProfileUser (View), AddTaskForm, Task (Model), PostgreSQL, Redis.
-  Показывает: GET /profile → кэш/БД → форма; POST {category, spent, comment, report}
-  → валидация формы → Task.save() → INSERT → инвалидация кэша → redirect /profile.
-  Как получить: отрендерить diagrams/sequence_add_task.puml через PlantUML
-  и сохранить как images/sequence_task_diagram.png
-*/
 #figure(
-  rect(width: 95%, height: 13cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Диаграмма последовательности: добавление задачи\
-      Источник: `diagrams/sequence_add_task.puml`\
-      Отрендерить и сохранить как `images/sequence_task_diagram.png`
-    ]
-  ],
+  image("../../images/sequence_task_diagram.png", width: 95%),
   caption: [Диаграмма последовательности процесса добавления задачи],
 ) <sequence-task>
 

@@ -34,52 +34,15 @@
   caption: [Структурная схема клиент-серверной архитектуры приложения],
 ) <client-server-architecture>
 
-/*
-  ПЛЕЙСХОЛДЕР — компонентная диаграмма
-  Файл: images/component_diagram.png
-  Источник: diagrams/component_diagram.puml
-  Описание: UML-диаграмма компонентов системы.
-  Показывает: Browser → Traefik → Nginx → Gunicorn → Django (Router, Views,
-  Forms, ORM, Templates, Auth, Cache) → PostgreSQL / Redis.
-  Как получить: отрендерить diagrams/component_diagram.puml через PlantUML
-  и сохранить результат как images/component_diagram.png
-*/
 #figure(
-  rect(width: 95%, height: 9cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Компонентная UML-диаграмма\
-      Источник: `diagrams/component_diagram.puml`\
-      Отрендерить и сохранить как `images/component_diagram.png`
-    ]
-  ],
+  image("../../images/component_diagram.png", width: 95%),
   caption: [Компонентная диаграмма приложения TaskAndTimes],
 ) <component-diagram>
 
 Диаграмма вариантов использования системы представлена на рисунке @use-case-diagram. Она показывает действия, доступные каждому актору: сотруднику, руководителю и администратору.
 
-/*
-  ПЛЕЙСХОЛДЕР — диаграмма вариантов использования
-  Файл: images/use_case_diagram.png
-  Источник: diagrams/use_case.puml
-  Описание: UML use-case диаграмма.
-  Акторы: Сотрудник, Руководитель, Администратор.
-  Сотрудник: регистрация, вход, просмотр профиля, добавление/редактирование/
-  удаление своих задач, редактирование профиля, смена пароля, выход.
-  Руководитель: вход, статистика, задачи сотрудника, управление категориями,
-  редактирование/удаление любых задач, выход.
-  Как получить: отрендерить diagrams/use_case.puml через PlantUML
-  и сохранить результат как images/use_case_diagram.png
-*/
 #figure(
-  rect(width: 95%, height: 12cm, stroke: (paint: black, dash: "dashed"))[
-    #align(center + horizon)[
-      *[ПЛЕЙСХОЛДЕР]*\
-      Use-case UML-диаграмма\
-      Источник: `diagrams/use_case.puml`\
-      Отрендерить и сохранить как `images/use_case_diagram.png`
-    ]
-  ],
+  image("../../images/use_case_diagram.png", width: 95%),
   caption: [Диаграмма вариантов использования системы],
 ) <use-case-diagram>
 
@@ -199,7 +162,7 @@ Docker с Docker Compose обеспечивает воспроизводимую
 - оплата по факту использования ресурсов;
 - простота управления через веб-консоль.
 
-Приложение развёртывается на ВМ с запуском `docker compose up -d --build`, что обеспечивает одновременный старт всех пяти сервисов: Django (×3), Nginx (×3), PostgreSQL, Redis и Traefik. URL задеплоенного приложения будет приведён после завершения развёртывания.
+Приложение развёртывается на ВМ с запуском `docker compose up -d --build`, что обеспечивает одновременный старт всех пяти сервисов: Django (×3), Nginx (×3), PostgreSQL, Redis и Traefik. Задеплоенное приложение доступно по адресу `http://130.193.45.17`.
 
 == Выводы по главе
 
